@@ -7,10 +7,19 @@ import config from "./config";
 function App() {
   const uploadRequest = useCallback(({ file }) => {
     const data = new FormData();
-    data.append("file", document);
+    console.log(file);
+    data.append("file", file);
     data.append("name", file.name);
-    // axios.post(config.API_URL, data).then(console.log).catch(console.log);
-    axios.get(`${config.API_URL}/upload`).then(console.log).catch(console.log);
+    axios(
+      {
+        url: `${config.API_URL}/upload`,
+        method: "POST",
+      },
+      data
+    )
+      .then(console.log)
+      .catch(console.log);
+    // axios.get(`${config.API_URL}/upload`).then(console.log).catch(console.log);
   });
   const handleUploadFile = useCallback((e) => {
     const target = e.target;
