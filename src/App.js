@@ -2,13 +2,15 @@ import React, { useCallback } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import axios from "axios";
+import config from "./config";
 
 function App() {
   const uploadRequest = useCallback(({ file }) => {
     const data = new FormData();
     data.append("file", document);
     data.append("name", file.name);
-    axios.post("/upload-document", data);
+    // axios.post(config.API_URL, data).then(console.log).catch(console.log);
+    axios.get(`${config.API_URL}/upload`).then(console.log).catch(console.log);
   });
   const handleUploadFile = useCallback((e) => {
     const target = e.target;

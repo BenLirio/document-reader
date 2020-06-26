@@ -13,6 +13,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "emulate": "npm run build && cd functions && npm run build && cd .. && firebase emulators:start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
